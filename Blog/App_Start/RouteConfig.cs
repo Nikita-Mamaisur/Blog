@@ -14,7 +14,7 @@ namespace Blog
                 url: "posts/show/{slug}",
                 defaults: new { controller = "Posts", action = "Show" }
             );
-
+            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",
