@@ -26,6 +26,7 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Add(PostModel model)
         {
             _serviceManager.Posts.Add(model);
