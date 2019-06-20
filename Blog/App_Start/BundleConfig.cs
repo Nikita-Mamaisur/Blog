@@ -8,7 +8,7 @@ namespace Blog
         {
             bundles.Add(new StyleBundle("~/content/lib")
                 .Include("~/content/bootstrap.css")
-                .Include("~/content/summernote/summernote.css"));
+                .Include("~/content/summernote.css"));
 
             bundles.Add(new ScriptBundle("~/scripts/lib")
                 .Include("~/scripts/jquery-3.0.0.js")

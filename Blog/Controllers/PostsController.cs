@@ -1,5 +1,6 @@
-﻿using Blog.DataServices.ServiceManagers;
-using Blog.Models;
+﻿using Blog.DataServices.Models.Posts;
+using Blog.DataServices.ServiceManagers;
+using System.Web.ModelBinding;
 using System.Web.Mvc;
 
 namespace Blog.Controllers
@@ -34,8 +35,9 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(PostModel model)
+        public ActionResult Add([Bind(Exclude = "Body")] PostModel model)
         {
+            model.Body = Request.Unvalidated.Form["Body"];
             _serviceManager.Posts.Add(model);
             return RedirectToAction("Index", "Home");
         }
