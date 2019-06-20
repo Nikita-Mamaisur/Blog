@@ -11,5 +11,7 @@ namespace Blog.DataServices.Models.Posts
         public string Title { get; set; }
 
         public string Body { get; set; }
+
+        public DateTime Date { get; set; }
     }
 }

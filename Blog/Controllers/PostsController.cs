@@ -1,5 +1,5 @@
-﻿using Blog.DataServices.Models.Posts;
-using Blog.DataServices.ServiceManagers;
+﻿using Blog.DataServices.ServiceManagers;
+using Blog.Models;
 using System.Web.Mvc;
 
 namespace Blog.Controllers
@@ -7,6 +7,14 @@ namespace Blog.Controllers
     public class PostsController : Controller
     {
         private readonly ServiceManager _serviceManager = new ServiceManager();
+
+
+        [ActionName("last-posts")]
+        public ActionResult LastPosts(int count = 15)
+        {
+            var lastPosts = _serviceManager.Posts.GetLastPosts(count);
+            return View("LastPosts", lastPosts);
+        }
 
         public ActionResult Show(string slug)
         {
@@ -26,7 +34,6 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
-        [ValidateInput(false)]
         public ActionResult Add(PostModel model)
         {
             _serviceManager.Posts.Add(model);

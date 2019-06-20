@@ -1,5 +1,14 @@
 ﻿@model Blog.DataServices.Models.Posts.PostModel
 
+@section meta
+{
+    <meta property="og:url" content="@Request.Url.AbsoluteUri" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="@Model.Title" />
+    <meta property="og:description" content="@Model.Body" />
+    <meta property="og:image" content="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" />
+}
+
 <p>
     @Model.Id
 </p>

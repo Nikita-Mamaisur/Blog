@@ -1,9 +1,28 @@
 ﻿
-<form method="post">
 
-    <input type="text" name="slug" />
-    <input type="text" name="title" />
-    <textarea name="body"></textarea>
+<div class="container">
+    <div class="row">
+        <form class="mx-auto" id="post-add-form" method="post">
 
-    <input type="submit" value="Сохранить" />
-</form>
+            <div class="form-row input-group my-2">
+                <input class="form-control" type="text" id="slug" name="slug" placeholder="Slug" />
+            </div>
+
+            <div class="form-row input-group my-2">
+                <input class="form-control" type="text" id="title" name="title" placeholder="Title" />
+            </div>
+
+            <div class="form-row my-2">
+                <textarea class="form-control" name="body"></textarea>
+            </div>
+
+            <input type="submit" value="Сохранить" />
+        </form>
+    </div>
+</div>
+
+
+
+@section scripts {
+    <script src="~/assets/js/posts/add/summernote.js"></script>
+}

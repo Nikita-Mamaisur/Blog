@@ -31,6 +31,11 @@ namespace Blog.DataAccess.Configuration
                 .IsUnicode()
                 .IsRequired();
 
+            Property(p => p.Date)
+                .HasColumnType("datetime2")
+                .HasPrecision(0)
+                .IsRequired();
+
             HasIndex(p => p.Slug)
                 .IsUnique(true)
                 .IsClustered(false);

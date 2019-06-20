@@ -1,0 +1,47 @@
+﻿@model List<Blog.DataServices.Models.Posts.PostModel>
+@{
+    ViewBag.Title = "Список постов";
+}
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v3.3"></script>
+
+<div class="container">
+
+    <div class="row h-25">
+
+        @foreach (var post in Model)
+        {
+            string postUrl = Url.Action("show", "posts", new RouteValueDictionary(new { slug = post.Slug }), Request.Url.Scheme, Request.Url.Host);
+
+            <div class="col-3">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">@post.Title</h4>
+                        @*<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>*@
+                        @*<p class="card-text">
+                                @Html.Raw(post.Body)
+                            </p>*@
+                        <a href="/posts/show/@post.Slug" class="card-link">Детальне</a>
+                    </div>
+                    <div class="card-footer">
+                        @post.Date.ToString("dd-MM-yyyy hh:mm")
+
+                        <div class="fb-share-button"
+                             data-href="@postUrl"
+                             data-layout="button_count" data-size="large">
+                            <a target="_blank"
+                               href="https://www.facebook.com/sharer/sharer.php?u=@(Html.Encode(postUrl))&amp;src=sdkpreparse"
+                               class="fb-xfbml-parse-ignore">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>

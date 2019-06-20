@@ -2,7 +2,8 @@
 <html>
 <head>
     @Styles.Render("~/content/lib")
-    <title>Index</title>
+    @RenderSection("meta", false)
+    <title>@ViewBag.Title | Blog</title>
 </head>
 <body>
     @Html.Partial("_Header")

@@ -4,6 +4,7 @@ using System;
 using System.Data.Entity;
 using System.Linq;
 using Blog.DataServices.Mapping;
+using System.Collections.Generic;
 
 namespace Blog.DataServices.Services
 {
@@ -24,7 +25,8 @@ namespace Blog.DataServices.Services
             {
                 Title = model.Title,
                 Body = model.Body,
-                Slug = model.Slug
+                Slug = model.Slug,
+                Date = DateTime.UtcNow
             };
 
             _set.Add(post);
@@ -46,5 +48,14 @@ namespace Blog.DataServices.Services
                 .SelectPostModel()
                 .SingleOrDefault();
         }
+
+        public List<PostModel> GetLastPosts(int count)
+        {
+            return _set.OrderByDescending(p => p.Date)
+                .Take(count)
+                .SelectPostModel()
+                .ToList();
+        }
+
     }
 }

@@ -13,6 +13,8 @@ namespace Blog.DataAccess.Entities
 
         public string Body { get; set; }
 
+        public DateTime Date { get; set; }
+
         public ICollection<Comment> Comments { get; set; }
     }
 }

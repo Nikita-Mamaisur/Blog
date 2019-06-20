@@ -13,7 +13,8 @@ namespace Blog.DataServices.Mapping
                 Id = x.Id,
                 Body = x.Body,
                 Slug = x.Slug,
-                Title = x.Title
+                Title = x.Title,
+                Date = x.Date
             });
         }
     }
