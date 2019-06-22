@@ -9,15 +9,13 @@
     <meta property="og:image" content="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" />
 }
 
-<p>
-    @Model.Id
-</p>
-<p>
-    @Model.Slug
-</p>
-<p>
-    @Model.Title
-</p>
-<p>
-    @Model.Body
-</p>
+
+<div class="container">
+
+    <h1 class="text-center"> @Model.Title </h1>
+
+    <p class="text-justify">
+        @Html.Raw(Model.Body)
+    </p>
+
+</div>

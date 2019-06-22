@@ -26,7 +26,7 @@
                         <a href="/posts/show/@post.Slug" class="card-link">Детальне</a>
                     </div>
                     <div class="card-footer">
-                        @post.Date.ToString("dd-MM-yyyy hh:mm")
+                        @post.Date.ToLongDateString() @post.Date.ToLocalTime().ToLongTimeString()
 
                         <div class="fb-share-button"
                              data-href="@postUrl"

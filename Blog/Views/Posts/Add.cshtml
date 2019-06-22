@@ -1,19 +1,22 @@
-﻿
+﻿@model Blog.DataServices.Models.Posts.PostModel
 
 <div class="container">
     <div class="row">
         <form class="mx-auto" id="post-add-form" method="post">
 
+            @Html.ValidationMessageFor(x => x.Slug)
             <div class="form-row input-group my-2">
-                <input class="form-control" type="text" id="slug" name="slug" placeholder="Slug" />
+                <input class="form-control" type="text" id="slug" name="slug" value="@Model.Slug" placeholder="Slug" />
             </div>
 
+            @Html.ValidationMessageFor(x => x.Title)
             <div class="form-row input-group my-2">
-                <input class="form-control" type="text" id="title" name="title" placeholder="Title" />
+                <input class="form-control" type="text" id="title" name="title" value="@Model.Title" placeholder="Title" />
             </div>
 
+            @Html.ValidationMessageFor(x => x.Body)
             <div class="form-row my-2">
-                <textarea class="form-control" name="body"></textarea>
+                <textarea class="form-control" name="body">@Model.Body</textarea>
             </div>
 
             <input type="submit" value="Сохранить" />

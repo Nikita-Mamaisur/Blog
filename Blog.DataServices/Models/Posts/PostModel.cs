@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Blog.DataServices.Models.Posts
 {
@@ -6,10 +8,17 @@ namespace Blog.DataServices.Models.Posts
     {
         public Guid Id { get; set; }
 
+        [Required]
+        [StringLength(30, MinimumLength = 4)]
         public string Slug { get; set; }
 
+        [Required]
+        [StringLength(50, MinimumLength = 5)]
         public string Title { get; set; }
 
+        [Required]
+        [AllowHtml]
+        [StringLength(500, MinimumLength = 10)]
         public string Body { get; set; }
 
         public DateTime Date { get; set; }

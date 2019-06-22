@@ -31,15 +31,19 @@ namespace Blog.Controllers
 
         public ActionResult Add()
         {
-            return View();
+            return View(new PostModel());
         }
 
         [HttpPost]
-        public ActionResult Add([Bind(Exclude = "Body")] PostModel model)
+        public ActionResult Add(PostModel model)
         {
-            model.Body = Request.Unvalidated.Form["Body"];
-            _serviceManager.Posts.Add(model);
-            return RedirectToAction("Index", "Home");
+            if (ModelState.IsValid)
+            {
+                _serviceManager.Posts.Add(model);
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(model);
         }
     }
 }

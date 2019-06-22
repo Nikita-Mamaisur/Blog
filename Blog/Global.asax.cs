@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -11,6 +12,10 @@ namespace Blog
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.Configuration(BundleTable.Bundles);
+
+            var cultureUa = CultureInfo.CreateSpecificCulture("uk");
+            CultureInfo.DefaultThreadCurrentCulture = cultureUa;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureUa;
         }
     }
 }
