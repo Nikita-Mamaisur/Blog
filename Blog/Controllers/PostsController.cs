@@ -1,14 +1,23 @@
-﻿using Blog.DataServices.Models.Posts;
+﻿using Blog.DataAccess.Entities;
+using Blog.DataServices.Models.Posts;
 using Blog.DataServices.ServiceManagers;
-using System.Web.ModelBinding;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System.Net;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Blog.Controllers
 {
+    [Authorize]
     public class PostsController : Controller
     {
         private readonly ServiceManager _serviceManager = new ServiceManager();
 
+        public UserManager<User> UserManager
+        {
+            get => HttpContext.GetOwinContext().GetUserManager<UserManager<User>>();
+        }
 
         [ActionName("last-posts")]
         public ActionResult LastPosts(int count = 15)
@@ -35,15 +44,34 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(PostModel model)
         {
             if (ModelState.IsValid)
             {
-                _serviceManager.Posts.Add(model);
+                var userId = User.Identity.GetUserId();
+                _serviceManager.Posts.Add(model, userId);
                 return RedirectToAction("Index", "Home");
             }
 
             return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("add-comment")]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddComment(CommentModel model, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                var userId = User.Identity.GetUserId();
+                _serviceManager.Posts.AddComment(model, userId);
+
+                returnUrl = !string.IsNullOrEmpty(returnUrl) ? returnUrl : "/";
+                return Redirect(returnUrl);
+            }
+
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
     }
 }

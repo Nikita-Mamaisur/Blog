@@ -1,0 +1,13 @@
+﻿@model Blog.Models.Account.RegisterModel
+@{
+    ViewBag.Title = "Зарегистрироваться";
+}
+
+<form method="post">
+
+    <input type="text" name="@nameof(Model.Email)" value="@Model.Email" />
+    <input type="password" name="@nameof(Model.Password)" value="" />
+    <input type="password" name="@nameof(Model.ConfirmPassword)" value="" />
+
+    <input type="submit" />
+</form>

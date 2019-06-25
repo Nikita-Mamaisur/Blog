@@ -21,7 +21,12 @@ namespace Blog.DataAccess.Configuration
                 .IsRequired();
 
             HasRequired(c => c.Post)
-                .WithMany(p => p.Comments);
+                .WithMany(p => p.Comments)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(c => c.Author)
+                .WithMany(p => p.Comments)
+                .WillCascadeOnDelete(false);
         }
     }
 }

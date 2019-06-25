@@ -14,7 +14,13 @@ namespace Blog
                 url: "posts/show/{slug}",
                 defaults: new { controller = "Posts", action = "Show" }
             );
-            
+
+            routes.MapRoute(
+                name: "Error",
+                url: "error/{statusCode}",
+                defaults: new { controller = "Error", action = "Index" }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",

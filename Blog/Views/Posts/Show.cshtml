@@ -9,7 +9,6 @@
     <meta property="og:image" content="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" />
 }
 
-
 <div class="container">
 
     <h1 class="text-center"> @Model.Title </h1>
@@ -17,5 +16,25 @@
     <p class="text-justify">
         @Html.Raw(Model.Body)
     </p>
+
+    <div>
+        <form action="/posts/add-comment" method="post">
+            <textarea name="text"></textarea>
+            <input type="hidden" name="postId" value="@Model.Id" />
+            <input type="hidden" name="returnUrl" value="@Request.Url.AbsoluteUri" />
+
+            @Html.AntiForgeryToken()
+            <input type="submit" />
+        </form>
+    </div>
+
+    <div>
+
+        @foreach (var comment in Model.Comments)
+        {
+            @comment.Text <br />
+        }
+
+    </div>
 
 </div>

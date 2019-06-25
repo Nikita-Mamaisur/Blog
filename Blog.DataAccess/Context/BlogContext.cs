@@ -1,10 +1,11 @@
 using Blog.DataAccess.Configuration;
 using Blog.DataAccess.Entities;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 
 namespace Blog.DataAccess.Context
 {
-    public class BlogContext : DbContext
+    public class BlogContext : IdentityDbContext<User>
     {
         public BlogContext()
             : base("name=BlogContext")
@@ -16,6 +17,8 @@ namespace Blog.DataAccess.Context
         {
             modelBuilder.Configurations.Add(new PostConfiguration());
             modelBuilder.Configurations.Add(new CommentConfiguration());
+            modelBuilder.Configurations.Add(new UserConfiguration());
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Post> Posts { get; set; }

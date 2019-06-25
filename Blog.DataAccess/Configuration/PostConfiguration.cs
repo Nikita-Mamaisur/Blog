@@ -40,8 +40,13 @@ namespace Blog.DataAccess.Configuration
                 .IsUnique(true)
                 .IsClustered(false);
 
+            HasRequired(p => p.Author)
+                .WithMany(a => a.Posts)
+                .WillCascadeOnDelete(false);
+
             HasMany(p => p.Comments)
-                .WithRequired(c => c.Post);
+                .WithRequired(c => c.Post)
+                .WillCascadeOnDelete(false);
         }
     }
 }

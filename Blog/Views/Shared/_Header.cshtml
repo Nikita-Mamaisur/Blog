@@ -10,6 +10,12 @@
         <li class="nav-item">
             <a class="nav-link active text-light" href="/posts/last-posts">Последние пости</a>
         </li>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <li class="nav-item">
+                <a class="nav-link active text-light" href="#">@User.Identity.Name</a>
+            </li>
+        }
     </ul>
 
 </section>

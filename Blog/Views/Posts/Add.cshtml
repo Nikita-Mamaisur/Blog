@@ -19,6 +19,7 @@
                 <textarea class="form-control" name="body">@Model.Body</textarea>
             </div>
 
+            @Html.AntiForgeryToken()
             <input type="submit" value="Сохранить" />
         </form>
     </div>

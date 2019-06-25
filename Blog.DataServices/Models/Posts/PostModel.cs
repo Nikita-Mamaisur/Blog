@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -22,5 +23,7 @@ namespace Blog.DataServices.Models.Posts
         public string Body { get; set; }
 
         public DateTime Date { get; set; }
+
+        public List<CommentModel> Comments { get; set; }
     }
 }

@@ -1,0 +1,11 @@
+﻿@model Blog.Models.Account.LoginModel
+
+<form method="post">
+
+    <input type="text" name="@nameof(Model.Email)" value="@Model.Email" />
+    <input type="password" name="@nameof(Model.Password)" value="" />
+    
+    <input type="submit" value="Ok" />
+</form>
+
+<a href="/account/register">Зарегисрироваться</a>
