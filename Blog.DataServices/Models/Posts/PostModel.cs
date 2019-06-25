@@ -19,8 +19,8 @@ namespace Blog.DataServices.Models.Posts
 
         [Required]
         [AllowHtml]
-        [StringLength(500, MinimumLength = 10)]
-        public string Body { get; set; }
+        [StringLength(maximumLength: 2147483647, MinimumLength = 10)]   // use maximumLength for Int32 
+		public string Body { get; set; }
 
         public DateTime Date { get; set; }
 
