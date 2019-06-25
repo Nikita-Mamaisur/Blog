@@ -11,5 +11,7 @@ namespace Blog.DataAccess.Entities
         public Post Post { get; set; }
 
         public User Author { get; set; }
-    }
+
+		public DateTime _date { get; set; }    //date
+	}
 }

@@ -28,13 +28,15 @@
         </form>
     </div>
 
-    <div>
+	<div>
 
-        @foreach (var comment in Model.Comments)
-        {
-            @comment.Text <br />
-        }
+		@foreach (var comment in Model.Comments)
+		{
+			@comment.Text <br />
+			@comment._date.ToLongDateString()
+			@comment._date.ToLocalTime().ToLongTimeString() <br />
+		}
 
-    </div>
+	</div>
 
 </div>

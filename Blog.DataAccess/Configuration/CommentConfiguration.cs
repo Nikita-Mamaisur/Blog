@@ -20,7 +20,12 @@ namespace Blog.DataAccess.Configuration
                 .IsUnicode()
                 .IsRequired();
 
-            HasRequired(c => c.Post)
+			Property(p => p._date)            //date
+				.HasColumnType("datetime2")
+				.HasPrecision(0)
+				.IsRequired();
+
+			HasRequired(c => c.Post)
                 .WithMany(p => p.Comments)
                 .WillCascadeOnDelete(false);
 

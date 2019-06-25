@@ -55,8 +55,9 @@ namespace Blog.DataServices.Services
             {
                 Author = user,
                 Post = post,
-                Text = model.Text
-            };
+                Text = model.Text,
+			   _date = DateTime.UtcNow    //date
+			};
 
             _commentSet.Add(comment);
             _context.SaveChanges();
